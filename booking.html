@@ -60,20 +60,31 @@
             <article class="booking-form fade-up">
               <span class="eyebrow">Step 1</span>
               <h2>Choose the activity</h2>
-              <div class="field-row" style="margin-top: 18px;">
-                <label for="activity-select">Activity</label>
-                <select id="activity-select" data-activity-select></select>
-              </div>
+              <div class="booking-pill-row" data-activity-select style="margin-top: 18px;"></div>
             </article>
 
             <article class="booking-form fade-up">
-              <span class="eyebrow">Step 2</span>
-              <h2>Choose the date and slot</h2>
-              <div class="field-row" style="margin-top: 18px;">
-                <label for="booking-date">Date</label>
-                <input id="booking-date" name="date" type="date" form="booking-form-main">
+              <div class="booking-panel__head">
+                <div>
+                  <span class="eyebrow">Step 2</span>
+                  <h2 style="margin-top: 12px;">Select your slot</h2>
+                </div>
+                <span class="booking-panel__meta">Karnataka Bhavan Turf Ground</span>
               </div>
-              <div class="slot-grid" data-slot-grid style="margin-top: 20px;"></div>
+
+              <div class="booking-date-head" style="margin-top: 22px;">
+                <span class="booking-label">Select date</span>
+                <span class="booking-date-month" data-booking-month>October 2026</span>
+              </div>
+              <div class="booking-date-row" data-date-row></div>
+
+              <div class="booking-duration" style="margin-top: 24px;">
+                <button class="booking-duration__pill is-active" type="button" data-duration-pill data-duration="1">1 Hour</button>
+                <button class="booking-duration__pill" type="button" data-duration-pill data-duration="2">2 Hours</button>
+                <button class="booking-duration__pill" type="button" data-duration-pill data-duration="3">3 Hours</button>
+              </div>
+
+              <div class="slot-groups" data-slot-grid style="margin-top: 24px;"></div>
             </article>
 
             <article class="booking-form fade-up">
@@ -90,21 +101,26 @@
                 </div>
                 <div class="inline-actions">
                   <button class="button button--primary" type="submit" data-ripple>Continue to payment</button>
-                  <a class="button button--secondary" href="./arenas.html" data-ripple>Back to activities</a>
+                  <a class="button button--primary" href="./arenas.html" data-ripple>Back to activities</a>
                 </div>
               </form>
             </article>
           </div>
 
           <aside class="booking-side">
-            <article class="summary-card fade-up">
+            <article class="summary-card booking-summary-card fade-up">
               <span class="eyebrow">Live summary</span>
               <div class="summary-list" style="margin-top: 18px;">
                 <div class="summary-item"><span>Ground</span><strong>Karnataka Bhavan Turf Ground</strong></div>
                 <div class="summary-item"><span>Activity</span><strong data-booking-activity>Box Cricket</strong></div>
+                <div class="summary-item"><span>Date</span><strong data-booking-date>Mon, 16 Oct</strong></div>
+                <div class="summary-item"><span>Duration</span><strong data-booking-duration>1 Hour</strong></div>
                 <div class="summary-item"><span>Slot</span><strong data-booking-slot>07:00 AM - 08:00 AM</strong></div>
                 <div class="summary-item"><span>Base amount</span><strong data-booking-price>Rs 900</strong></div>
-                <div class="summary-item"><span>GST and fee</span><strong>Calculated next</strong></div>
+                <div class="summary-item"><span>GST and fee</span><strong>Calculated at payment</strong></div>
+              </div>
+              <div class="booking-summary-card__cta">
+                <button class="button button--primary" type="submit" form="booking-form-main" data-ripple>Confirm</button>
               </div>
             </article>
           </aside>

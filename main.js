@@ -35,6 +35,47 @@ const defaultSlots = [
   { id: "slot-6", time: "07:00 PM - 08:00 PM", note: "Full squad block" }
 ];
 
+const bookingDates = [
+  { id: "mon-16", day: "Mon", date: "16", label: "Mon, 16 Oct", month: "October 2026" },
+  { id: "tue-17", day: "Tue", date: "17", label: "Tue, 17 Oct", month: "October 2026" },
+  { id: "wed-18", day: "Wed", date: "18", label: "Wed, 18 Oct", month: "October 2026" },
+  { id: "thu-19", day: "Thu", date: "19", label: "Thu, 19 Oct", month: "October 2026" },
+  { id: "fri-20", day: "Fri", date: "20", label: "Fri, 20 Oct", month: "October 2026" }
+];
+
+const slotGroups = [
+  {
+    label: "Morning",
+    icon: "☀",
+    slots: [
+      { id: "m-0600", time: "06:00 AM", disabled: false },
+      { id: "m-0700", time: "07:00 AM", disabled: false },
+      { id: "m-0800", time: "08:00 AM", disabled: false }
+    ]
+  },
+  {
+    label: "Afternoon",
+    icon: "✦",
+    slots: [
+      { id: "a-0100", time: "01:00 PM", disabled: false },
+      { id: "a-0200", time: "02:00 PM", disabled: false },
+      { id: "a-0300", time: "03:00 PM", disabled: true }
+    ]
+  },
+  {
+    label: "Evening",
+    icon: "☾",
+    slots: [
+      { id: "e-0600", time: "06:00 PM", disabled: false },
+      { id: "e-0700", time: "07:00 PM", disabled: false },
+      { id: "e-0800", time: "08:00 PM", disabled: false },
+      { id: "e-0900", time: "09:00 PM", disabled: false },
+      { id: "e-1000", time: "10:00 PM", disabled: false },
+      { id: "e-1100", time: "11:00 PM", disabled: false }
+    ]
+  }
+];
+
 const sampleBookings = [
   {
     id: "FD-20260402-A1B2",
@@ -58,7 +99,9 @@ const sampleBookings = [
 
 const state = {
   selectedActivity: venue.activities[0].id,
-  selectedSlot: defaultSlots[1].time
+  selectedSlot: "08:00 AM",
+  selectedDate: bookingDates[0],
+  selectedDuration: "1"
 };
 
 const formatCurrency = (amount) => `Rs ${Number(amount || 0).toLocaleString("en-IN")}`;
@@ -278,32 +321,60 @@ const getSelectedActivity = () => {
   return getActivityByName(query);
 };
 
+const updateBookingSummary = () => {
+  const activity = getActivityByName(state.selectedActivity);
+  document.querySelectorAll("[data-booking-activity]").forEach((node) => {
+    node.textContent = activity.name;
+  });
+  document.querySelectorAll("[data-booking-price]").forEach((node) => {
+    node.textContent = formatCurrency(activity.price);
+  });
+  document.querySelectorAll("[data-booking-slot]").forEach((node) => {
+    node.textContent = state.selectedSlot;
+  });
+  document.querySelectorAll("[data-booking-date]").forEach((node) => {
+    node.textContent = state.selectedDate.label;
+  });
+  document.querySelectorAll("[data-booking-duration]").forEach((node) => {
+    node.textContent = `${state.selectedDuration} Hour${state.selectedDuration === "1" ? "" : "s"}`;
+  });
+
+  const month = document.querySelector("[data-booking-month]");
+  if (month) {
+    month.textContent = state.selectedDate.month;
+  }
+};
+
 const renderBookingActivityOptions = () => {
-  const select = document.querySelector("[data-activity-select]");
-  if (!select) {
+  const target = document.querySelector("[data-activity-select]");
+  if (!target) {
     return;
   }
 
   const selected = getSelectedActivity();
   state.selectedActivity = selected.id;
-
-  select.innerHTML = venue.activities.map((activity) => `
-    <option value="${activity.id}" ${activity.id === selected.id ? "selected" : ""}>${activity.name}</option>
+  target.innerHTML = venue.activities.map((activity) => `
+    <button
+      class="booking-pill ${activity.id === selected.id ? "is-active" : ""}"
+      type="button"
+      data-activity-pill
+      data-activity-id="${activity.id}"
+      data-ripple
+    >
+      ${activity.name}
+    </button>
   `).join("");
 
-  const updatePrice = () => {
-    const active = getActivityByName(select.value);
-    state.selectedActivity = active.id;
-    document.querySelectorAll("[data-booking-activity]").forEach((node) => {
-      node.textContent = active.name;
+  target.querySelectorAll("[data-activity-pill]").forEach((button) => {
+    button.addEventListener("click", () => {
+      state.selectedActivity = button.dataset.activityId || venue.activities[0].id;
+      renderBookingActivityOptions();
+      updateBookingSummary();
+      initRipples();
     });
-    document.querySelectorAll("[data-booking-price]").forEach((node) => {
-      node.textContent = formatCurrency(active.price);
-    });
-  };
+  });
 
-  select.addEventListener("change", updatePrice);
-  updatePrice();
+  updateBookingSummary();
 };
 
 const renderBookingSlots = () => {
@@ -312,28 +383,73 @@ const renderBookingSlots = () => {
     return;
   }
 
-  target.innerHTML = defaultSlots.map((slot, index) => `
-    <button class="slot-card ${index === 1 ? "is-selected" : ""}" type="button" data-slot-card data-slot-time="${slot.time}">
-      <span class="slot-card__time">${slot.time}</span>
-      <span class="muted-text">${slot.note}</span>
-      <span class="status-chip">${index < 3 ? "Morning" : "Evening"}</span>
-    </button>
-  `).join("");
+  const dateRow = document.querySelector("[data-date-row]");
+  if (dateRow) {
+    dateRow.innerHTML = bookingDates.map((entry) => `
+      <button class="booking-date-chip ${state.selectedDate.id === entry.id ? "is-active" : ""}" type="button" data-date-chip data-date-id="${entry.id}">
+        <span>${entry.day}</span>
+        <strong>${entry.date}</strong>
+      </button>
+    `).join("");
 
-  target.querySelectorAll("[data-slot-card]").forEach((slot) => {
-    slot.addEventListener("click", () => {
-      target.querySelectorAll("[data-slot-card]").forEach((card) => card.classList.remove("is-selected"));
-      slot.classList.add("is-selected");
-      state.selectedSlot = slot.dataset.slotTime || defaultSlots[0].time;
-      document.querySelectorAll("[data-booking-slot]").forEach((node) => {
-        node.textContent = state.selectedSlot;
+    dateRow.querySelectorAll("[data-date-chip]").forEach((chip) => {
+      chip.addEventListener("click", () => {
+        state.selectedDate = bookingDates.find((entry) => entry.id === chip.dataset.dateId) || bookingDates[0];
+        renderBookingSlots();
+        updateBookingSummary();
       });
+    });
+  }
+
+  const durationPills = document.querySelectorAll("[data-duration-pill]");
+  durationPills.forEach((pill) => {
+    pill.classList.toggle("is-active", pill.dataset.duration === state.selectedDuration);
+    if (pill.dataset.bound === "true") {
+      return;
+    }
+    pill.dataset.bound = "true";
+    pill.addEventListener("click", () => {
+      state.selectedDuration = pill.dataset.duration || "1";
+      durationPills.forEach((other) => other.classList.remove("is-active"));
+      pill.classList.add("is-active");
+      updateBookingSummary();
     });
   });
 
-  document.querySelectorAll("[data-booking-slot]").forEach((node) => {
-    node.textContent = state.selectedSlot;
+  target.innerHTML = slotGroups.map((group) => `
+    <section class="slot-group">
+      <div class="slot-group__head">
+        <span class="slot-group__icon">${group.icon}</span>
+        <span>${group.label}</span>
+      </div>
+      <div class="slot-group__grid">
+        ${group.slots.map((slot) => `
+          <button
+            class="booking-slot ${state.selectedSlot === slot.time ? "is-selected" : ""} ${slot.disabled ? "is-disabled" : ""}"
+            type="button"
+            data-slot-chip
+            data-slot-time="${slot.time}"
+            ${slot.disabled ? "disabled" : ""}
+          >
+            ${slot.time}
+          </button>
+        `).join("")}
+      </div>
+    </section>
+  `).join("");
+
+  target.querySelectorAll("[data-slot-chip]").forEach((slot) => {
+    if (slot.disabled) {
+      return;
+    }
+    slot.addEventListener("click", () => {
+      state.selectedSlot = slot.dataset.slotTime || "08:00 AM";
+      renderBookingSlots();
+      updateBookingSummary();
+    });
   });
+
+  updateBookingSummary();
 };
 
 const initBookingForm = () => {
@@ -346,26 +462,26 @@ const initBookingForm = () => {
     event.preventDefault();
     const name = form.querySelector('input[name="name"]')?.value?.trim();
     const phone = form.querySelector('input[name="phone"]')?.value?.trim();
-    const date = form.querySelector('input[name="date"]')?.value;
+    const date = state.selectedDate.label;
     const activity = getActivityByName(state.selectedActivity);
 
     if (!name || !phone || !date) {
       showToast("Complete your name, phone number, and date first.");
       return;
-    }
+      }
 
     const slotFee = activity.price;
     const gstAmount = Math.round(slotFee * 0.18);
     const convenienceFee = 20;
     const totalAmount = slotFee + gstAmount + convenienceFee;
 
-    const draft = {
-      bookingRef: `FD-${new Date().toISOString().slice(0, 10).replace(/-/g, "")}-${Math.random().toString(36).slice(2, 6).toUpperCase()}`,
-      venueName: venue.name,
-      activity: activity.name,
-      activityId: activity.id,
-      date,
-      slot: state.selectedSlot,
+      const draft = {
+        bookingRef: `FD-${new Date().toISOString().slice(0, 10).replace(/-/g, "")}-${Math.random().toString(36).slice(2, 6).toUpperCase()}`,
+        venueName: venue.name,
+        activity: activity.name,
+        activityId: activity.id,
+        date,
+        slot: state.selectedSlot,
       name,
       phone,
       slotFee,
