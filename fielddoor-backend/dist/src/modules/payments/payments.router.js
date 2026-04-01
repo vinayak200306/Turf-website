@@ -1,0 +1,14 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const auth_1 = require("../../middleware/auth");
+const rateLimiter_1 = require("../../middleware/rateLimiter");
+const validate_1 = require("../../middleware/validate");
+const asyncHandler_1 = require("../../utils/asyncHandler");
+const payments_controller_1 = require("./payments.controller");
+const payments_schema_1 = require("./payments.schema");
+const router = (0, express_1.Router)();
+router.use(rateLimiter_1.paymentLimiter);
+router.post("/verify", auth_1.auth, (0, validate_1.validate)(payments_schema_1.verifyPaymentSchema), (0, asyncHandler_1.asyncHandler)(payments_controller_1.paymentsController.verify));
+router.post("/webhook", (0, asyncHandler_1.asyncHandler)(payments_controller_1.paymentsController.webhook));
+exports.default = router;

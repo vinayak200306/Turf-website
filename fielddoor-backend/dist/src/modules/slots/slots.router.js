@@ -1,0 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const auth_1 = require("../../middleware/auth");
+const validate_1 = require("../../middleware/validate");
+const asyncHandler_1 = require("../../utils/asyncHandler");
+const slots_controller_1 = require("./slots.controller");
+const slots_schema_1 = require("./slots.schema");
+const router = (0, express_1.Router)();
+router.get("/", (0, validate_1.validate)(slots_schema_1.getSlotsSchema, "query"), (0, asyncHandler_1.asyncHandler)(slots_controller_1.slotsController.getSlots));
+router.post("/lock", auth_1.auth, (0, validate_1.validate)(slots_schema_1.lockSlotSchema), (0, asyncHandler_1.asyncHandler)(slots_controller_1.slotsController.lock));
+router.delete("/lock/:slotId", auth_1.auth, (0, asyncHandler_1.asyncHandler)(slots_controller_1.slotsController.release));
+exports.default = router;

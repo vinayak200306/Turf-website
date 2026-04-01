@@ -1,0 +1,16 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const auth_1 = require("../../middleware/auth");
+const rateLimiter_1 = require("../../middleware/rateLimiter");
+const validate_1 = require("../../middleware/validate");
+const asyncHandler_1 = require("../../utils/asyncHandler");
+const auth_controller_1 = require("./auth.controller");
+const auth_schema_1 = require("./auth.schema");
+const router = (0, express_1.Router)();
+router.use(rateLimiter_1.authLimiter);
+router.post("/send-otp", rateLimiter_1.otpLimiter, (0, validate_1.validate)(auth_schema_1.sendOtpSchema), (0, asyncHandler_1.asyncHandler)(auth_controller_1.authController.sendOtp));
+router.post("/verify-otp", (0, validate_1.validate)(auth_schema_1.verifyOtpSchema), (0, asyncHandler_1.asyncHandler)(auth_controller_1.authController.verifyOtp));
+router.post("/refresh", (0, validate_1.validate)(auth_schema_1.refreshSchema), (0, asyncHandler_1.asyncHandler)(auth_controller_1.authController.refresh));
+router.post("/logout", auth_1.auth, (0, asyncHandler_1.asyncHandler)(auth_controller_1.authController.logout));
+exports.default = router;

@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 1600" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="80" y1="0" x2="780" y2="1600" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0A0F1B"/>
+      <stop offset="0.55" stop-color="#060912"/>
+      <stop offset="1" stop-color="#05070E"/>
+    </linearGradient>
+    <radialGradient id="cyanGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(186 340) rotate(42.1) scale(360 296)">
+      <stop stop-color="#00F5FF" stop-opacity=".26"/>
+      <stop offset="1" stop-color="#00F5FF" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="violetGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(650 480) rotate(130.2) scale(370 320)">
+      <stop stop-color="#7B61FF" stop-opacity=".34"/>
+      <stop offset="1" stop-color="#7B61FF" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="pitch" x1="120" y1="260" x2="740" y2="1380" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1A4B42"/>
+      <stop offset=".52" stop-color="#0D332B"/>
+      <stop offset="1" stop-color="#091E1B"/>
+    </linearGradient>
+    <linearGradient id="overlay" x1="430" y1="0" x2="430" y2="1600" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#060912" stop-opacity=".16"/>
+      <stop offset=".68" stop-color="#060912" stop-opacity=".42"/>
+      <stop offset="1" stop-color="#060912" stop-opacity=".88"/>
+    </linearGradient>
+  </defs>
+  <rect width="860" height="1600" fill="url(#bg)"/>
+  <rect width="860" height="1600" fill="url(#cyanGlow)"/>
+  <rect width="860" height="1600" fill="url(#violetGlow)"/>
+  <g opacity=".95">
+    <path d="M154 1260C154 1022.18 346.77 829.5 584.5 829.5H683V1342H154V1260Z" fill="#0D121D"/>
+    <path d="M170 1248C170 1029.02 347.52 851.5 566.5 851.5H661V1324H170V1248Z" fill="url(#pitch)"/>
+    <path d="M197 1216C197 1019.94 355.94 861 552 861H634V1304H197V1216Z" fill="#113A34"/>
+    <path d="M214 1189H617" stroke="#6AFFCF" stroke-opacity=".48" stroke-width="3"/>
+    <path d="M214 1130H617" stroke="#6AFFCF" stroke-opacity=".28" stroke-width="2"/>
+    <path d="M214 1071H617" stroke="#6AFFCF" stroke-opacity=".18" stroke-width="2"/>
+    <path d="M415.5 861V1304" stroke="#A7FFF2" stroke-opacity=".22" stroke-width="2"/>
+    <circle cx="415.5" cy="1189" r="76" stroke="#A7FFF2" stroke-opacity=".18" stroke-width="2"/>
+  </g>
+  <g opacity=".9">
+    <rect x="94" y="96" width="672" height="980" rx="42" fill="url(#overlay)"/>
+    <rect x="112" y="114" width="636" height="944" rx="34" stroke="white" stroke-opacity=".08" stroke-width="2"/>
+    <path d="M214 260V520" stroke="white" stroke-opacity=".1" stroke-width="2"/>
+    <path d="M646 260V520" stroke="white" stroke-opacity=".08" stroke-width="2"/>
+    <path d="M214 520H646" stroke="white" stroke-opacity=".08" stroke-width="2"/>
+  </g>
+  <text x="430" y="1298" fill="#F0F4FF" font-family="Arial, sans-serif" font-size="88" letter-spacing="14" text-anchor="middle">FIELD DOOR</text>
+</svg>

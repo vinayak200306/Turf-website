@@ -1,0 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const auth_1 = require("../../middleware/auth");
+const validate_1 = require("../../middleware/validate");
+const asyncHandler_1 = require("../../utils/asyncHandler");
+const venues_controller_1 = require("./venues.controller");
+const venues_schema_1 = require("./venues.schema");
+const router = (0, express_1.Router)();
+router.get("/search", (0, validate_1.validate)(venues_schema_1.venueSearchQuerySchema, "query"), (0, asyncHandler_1.asyncHandler)(venues_controller_1.venuesController.search));
+router.get("/", auth_1.optionalAuth, (0, validate_1.validate)(venues_schema_1.venueListQuerySchema, "query"), (0, asyncHandler_1.asyncHandler)(venues_controller_1.venuesController.list));
+router.get("/:id", auth_1.optionalAuth, (0, asyncHandler_1.asyncHandler)(venues_controller_1.venuesController.details));
+exports.default = router;

@@ -1,0 +1,17 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const auth_1 = require("../../middleware/auth");
+const roleGuard_1 = require("../../middleware/roleGuard");
+const asyncHandler_1 = require("../../utils/asyncHandler");
+const admin_controller_1 = require("./admin.controller");
+const router = (0, express_1.Router)();
+router.use(auth_1.auth, (0, roleGuard_1.roleGuard)("ADMIN"));
+router.get("/dashboard", (0, asyncHandler_1.asyncHandler)(admin_controller_1.adminController.dashboard));
+router.get("/venues", (0, asyncHandler_1.asyncHandler)(admin_controller_1.adminController.venues));
+router.patch("/venues/:id/approve", (0, asyncHandler_1.asyncHandler)(admin_controller_1.adminController.approveVenue));
+router.get("/users", (0, asyncHandler_1.asyncHandler)(admin_controller_1.adminController.users));
+router.patch("/users/:id/status", (0, asyncHandler_1.asyncHandler)(admin_controller_1.adminController.updateUserStatus));
+router.get("/bookings", (0, asyncHandler_1.asyncHandler)(admin_controller_1.adminController.bookings));
+router.get("/payments", (0, asyncHandler_1.asyncHandler)(admin_controller_1.adminController.payments));
+exports.default = router;
