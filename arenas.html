@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#120904">
+  <title>Field Door | Arenas</title>
+  <meta name="description" content="Explore premium turf and arena listings across multiple cities with Field Door.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body data-page="arenas">
+  <div class="site-shell">
+    <header class="site-header" data-header>
+      <div class="container site-header__inner">
+        <a class="brand" href="./index.html" aria-label="Field Door home">
+          <span class="brand__mark"><img src="./assets/brand-mark.svg" alt="Field Door logo"></span>
+          <span>
+            <span class="brand__eyebrow">Arena discovery</span>
+            <span class="brand__name">Field Door</span>
+          </span>
+        </a>
+        <nav class="site-nav" aria-label="Primary navigation">
+          <a class="site-nav__link" href="./index.html" data-nav-link="home">Home</a>
+          <a class="site-nav__link" href="./arenas.html" data-nav-link="arenas">Arenas</a>
+          <a class="site-nav__link" href="./booking.html" data-nav-link="booking">Booking</a>
+          <a class="site-nav__link" href="./about.html" data-nav-link="about">About</a>
+          <a class="site-nav__link" href="./contact.html" data-nav-link="contact">Contact</a>
+          <a class="button button--primary site-nav__cta" href="./account.html" data-ripple>Account</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page-shell">
+      <section class="page-banner">
+        <div class="container">
+          <article class="page-banner__card glass-card fade-up">
+            <div>
+              <span class="eyebrow">Arena listing page</span>
+              <h1>FIND A <span>BETTER VENUE</span></h1>
+              <p>Use this page as the main client-facing browsing surface. It keeps the warm premium style while giving players a clearer desktop and mobile listing experience.</p>
+            </div>
+            <div class="page-banner__meta-grid">
+              <div class="metric-card">
+                <strong>Live</strong>
+                <span>Sport filters powered by frontend data hydration</span>
+              </div>
+              <div class="metric-card">
+                <strong>Fast</strong>
+                <span>Venue cards route directly into booking pages</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container listing-grid">
+          <div class="listing-main">
+            <div class="section-heading fade-up">
+              <div>
+                <span class="section-heading__eyebrow">Venue filter rail</span>
+                <h2>FILTER BY <span>SPORT</span></h2>
+              </div>
+            </div>
+            <div class="category-rail" data-category-rail></div>
+
+            <div class="section-heading fade-up" style="margin-top: 34px;">
+              <div>
+                <span class="section-heading__eyebrow">Available now</span>
+                <h2>FEATURED <span>ARENAS</span></h2>
+                <p>Every card now leads into a working booking route with query data carried through.</p>
+              </div>
+            </div>
+            <div class="arena-grid" data-venue-grid data-limit="12"></div>
+          </div>
+
+          <aside class="listing-side">
+            <article class="summary-card fade-up">
+              <span class="eyebrow">Search summary</span>
+              <h3 class="arena-card__title" style="margin-top: 16px;">What users expect here</h3>
+              <div class="summary-list" style="margin-top: 16px;">
+                <div class="summary-item"><span>Responsive grid</span><strong>Enabled</strong></div>
+                <div class="summary-item"><span>Working card click-through</span><strong>Enabled</strong></div>
+                <div class="summary-item"><span>Sport-based filtering</span><strong>Enabled</strong></div>
+                <div class="summary-item"><span>Booking page handoff</span><strong>Enabled</strong></div>
+              </div>
+            </article>
+
+            <article class="info-card fade-up">
+              <span class="eyebrow">Quick actions</span>
+              <div class="inline-actions" style="margin-top: 16px;">
+                <a class="button button--primary" href="./booking.html" data-ripple>Open booking</a>
+                <a class="button button--secondary" href="./contact.html" data-ripple>Venue enquiry</a>
+              </div>
+            </article>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <a class="brand" href="./index.html">
+            <span class="brand__mark"><img src="./assets/brand-mark.svg" alt="Field Door logo"></span>
+            <span>
+              <span class="brand__eyebrow">Arena booking, refined</span>
+              <span class="brand__name">Field Door</span>
+            </span>
+          </a>
+        </div>
+        <div>
+          <h3 class="footer-title">Navigation</h3>
+          <div class="footer-list">
+            <a href="./index.html">Home</a>
+            <a href="./arenas.html">Arenas</a>
+            <a href="./booking.html">Booking</a>
+          </div>
+        </div>
+        <div>
+          <h3 class="footer-title">Support</h3>
+          <div class="footer-list">
+            <span>hello@fielddoor.in</span>
+            <span>Venue onboarding assistance</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <nav class="mobile-dock" aria-label="Mobile navigation">
+      <a class="mobile-dock__link" href="./index.html" data-nav-link="home"><span class="mobile-dock__icon">⌂</span><span>Home</span></a>
+      <a class="mobile-dock__link" href="./arenas.html" data-nav-link="arenas"><span class="mobile-dock__icon">◫</span><span>Arenas</span></a>
+      <a class="mobile-dock__link" href="./booking.html" data-nav-link="booking"><span class="mobile-dock__icon">◷</span><span>Book</span></a>
+      <a class="mobile-dock__link" href="./contact.html" data-nav-link="contact"><span class="mobile-dock__icon">✉</span><span>Contact</span></a>
+      <a class="mobile-dock__link" href="./account.html" data-nav-link="account"><span class="mobile-dock__icon">◎</span><span>Account</span></a>
+    </nav>
+
+    <div class="toast" data-toast aria-live="polite"></div>
+  </div>
+
+  <script src="./main.js"></script>
+</body>
+</html>

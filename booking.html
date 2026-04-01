@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#120904">
+  <title>Field Door | Booking</title>
+  <meta name="description" content="Select a slot and preview the booking flow for Field Door.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body data-page="booking">
+  <div class="site-shell">
+    <header class="site-header" data-header>
+      <div class="container site-header__inner">
+        <a class="brand" href="./index.html" aria-label="Field Door home">
+          <span class="brand__mark"><img src="./assets/brand-mark.svg" alt="Field Door logo"></span>
+          <span>
+            <span class="brand__eyebrow">Booking flow</span>
+            <span class="brand__name">Field Door</span>
+          </span>
+        </a>
+        <nav class="site-nav" aria-label="Primary navigation">
+          <a class="site-nav__link" href="./index.html" data-nav-link="home">Home</a>
+          <a class="site-nav__link" href="./arenas.html" data-nav-link="arenas">Arenas</a>
+          <a class="site-nav__link" href="./booking.html" data-nav-link="booking">Booking</a>
+          <a class="site-nav__link" href="./about.html" data-nav-link="about">About</a>
+          <a class="site-nav__link" href="./contact.html" data-nav-link="contact">Contact</a>
+          <a class="button button--primary site-nav__cta" href="./account.html" data-ripple>Sign In</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page-shell">
+      <section class="page-banner">
+        <div class="container">
+          <article class="page-banner__card glass-card fade-up">
+            <div>
+              <span class="eyebrow">Booking page</span>
+              <h1>LOCK YOUR <span>NEXT SLOT</span></h1>
+              <p>This page is designed to behave like a real booking handoff. Venue cards now route here with the selected venue and sport already filled in.</p>
+            </div>
+            <div class="page-banner__meta-grid">
+              <div class="metric-card">
+                <strong data-booking-venue>Galaxy Zone</strong>
+                <span>Selected venue</span>
+              </div>
+              <div class="metric-card">
+                <strong data-booking-sport>Box Cricket</strong>
+                <span>Selected sport</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container booking-grid">
+          <div class="booking-main">
+            <article class="booking-form fade-up">
+              <span class="eyebrow">Step 1</span>
+              <h2>Choose a time slot</h2>
+              <p>Slots below are interactive demo states. Select one to continue with the booking preview.</p>
+              <div class="slot-grid" style="margin-top: 22px;">
+                <button class="slot-card" type="button" data-slot-card data-slot-time="06:00 AM - 07:00 AM">
+                  <span class="slot-card__time">06:00 AM</span>
+                  <span class="muted-text">Early practice hour</span>
+                  <span class="status-chip">₹800</span>
+                </button>
+                <button class="slot-card" type="button" data-slot-card data-slot-time="07:00 AM - 08:00 AM">
+                  <span class="slot-card__time">07:00 AM</span>
+                  <span class="muted-text">Popular morning slot</span>
+                  <span class="status-chip">₹900</span>
+                </button>
+                <button class="slot-card" type="button" data-slot-card data-slot-time="08:00 AM - 09:00 AM">
+                  <span class="slot-card__time">08:00 AM</span>
+                  <span class="muted-text">Team warm-up favorite</span>
+                  <span class="status-chip">₹950</span>
+                </button>
+                <button class="slot-card" type="button" data-slot-card data-slot-time="05:00 PM - 06:00 PM">
+                  <span class="slot-card__time">05:00 PM</span>
+                  <span class="muted-text">Post-work hour</span>
+                  <span class="status-chip">₹1,100</span>
+                </button>
+                <button class="slot-card" type="button" data-slot-card data-slot-time="06:00 PM - 07:00 PM">
+                  <span class="slot-card__time">06:00 PM</span>
+                  <span class="muted-text">Peak crowd timing</span>
+                  <span class="status-chip">₹1,250</span>
+                </button>
+                <button class="slot-card" type="button" data-slot-card data-slot-time="07:00 PM - 08:00 PM">
+                  <span class="slot-card__time">07:00 PM</span>
+                  <span class="muted-text">Best for full squads</span>
+                  <span class="status-chip">₹1,350</span>
+                </button>
+              </div>
+            </article>
+
+            <article class="booking-form fade-up">
+              <span class="eyebrow">Step 2</span>
+              <h2>Player details</h2>
+              <p>Use this as the visible booking form for demos and UI reviews. It can later connect to the live backend booking endpoints.</p>
+              <form data-booking-form style="margin-top: 20px;">
+                <input type="hidden" name="venueId" value="">
+                <input type="hidden" name="sportId" value="">
+                <div class="field-row">
+                  <label for="booking-name">Full name</label>
+                  <input id="booking-name" name="name" type="text" placeholder="Enter your full name">
+                </div>
+                <div class="field-row">
+                  <label for="booking-phone">Phone number</label>
+                  <input id="booking-phone" name="phone" type="tel" placeholder="+91 98765 43210">
+                </div>
+                <div class="field-row">
+                  <label for="booking-notes">Notes</label>
+                  <textarea id="booking-notes" name="notes" placeholder="Mention team size, preferred turf side, or equipment needs."></textarea>
+                </div>
+                <div class="inline-actions">
+                  <button class="button button--primary" type="submit" data-ripple>Continue to checkout</button>
+                  <a class="button button--secondary" href="./arenas.html" data-ripple>Back to arenas</a>
+                </div>
+              </form>
+            </article>
+          </div>
+
+          <aside class="booking-side">
+            <article class="summary-card fade-up">
+              <span class="eyebrow">Booking summary</span>
+              <div class="summary-list" style="margin-top: 18px;">
+                <div class="summary-item"><span>Venue</span><strong data-booking-venue>Galaxy Zone</strong></div>
+                <div class="summary-item"><span>Sport</span><strong data-booking-sport>Box Cricket</strong></div>
+                <div class="summary-item"><span>Selected slot</span><strong data-selected-slot>Not selected</strong></div>
+                <div class="summary-item"><span>Convenience fee</span><strong>₹20</strong></div>
+                <div class="summary-item"><span>Estimated total</span><strong>₹1,082</strong></div>
+              </div>
+            </article>
+
+            <article class="info-card fade-up">
+              <span class="eyebrow">Need help first?</span>
+              <p style="margin-top: 16px;" class="muted-text">If the client wants a more detailed booking route later, we can add calendar selection, coupons, player count, and payment steps next.</p>
+              <div class="inline-actions" style="margin-top: 16px;">
+                <a class="button button--secondary" href="./contact.html" data-ripple>Talk to support</a>
+              </div>
+            </article>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <a class="brand" href="./index.html">
+            <span class="brand__mark"><img src="./assets/brand-mark.svg" alt="Field Door logo"></span>
+            <span>
+              <span class="brand__eyebrow">Booking flow preview</span>
+              <span class="brand__name">Field Door</span>
+            </span>
+          </a>
+        </div>
+        <div>
+          <h3 class="footer-title">Navigation</h3>
+          <div class="footer-list">
+            <a href="./arenas.html">Arenas</a>
+            <a href="./account.html">Account</a>
+            <a href="./contact.html">Contact</a>
+          </div>
+        </div>
+        <div>
+          <h3 class="footer-title">Support</h3>
+          <div class="footer-list">
+            <span>Assisted booking available</span>
+            <span>Need venue onboarding? Reach out.</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <nav class="mobile-dock" aria-label="Mobile navigation">
+      <a class="mobile-dock__link" href="./index.html" data-nav-link="home"><span class="mobile-dock__icon">⌂</span><span>Home</span></a>
+      <a class="mobile-dock__link" href="./arenas.html" data-nav-link="arenas"><span class="mobile-dock__icon">◫</span><span>Arenas</span></a>
+      <a class="mobile-dock__link" href="./booking.html" data-nav-link="booking"><span class="mobile-dock__icon">◷</span><span>Book</span></a>
+      <a class="mobile-dock__link" href="./contact.html" data-nav-link="contact"><span class="mobile-dock__icon">✉</span><span>Contact</span></a>
+      <a class="mobile-dock__link" href="./account.html" data-nav-link="account"><span class="mobile-dock__icon">◎</span><span>Account</span></a>
+    </nav>
+
+    <div class="toast" data-toast aria-live="polite"></div>
+  </div>
+
+  <script src="./main.js"></script>
+</body>
+</html>

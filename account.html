@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#120904">
+  <title>Field Door | Account</title>
+  <meta name="description" content="Preview the account area for login, bookings, and saved venues.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body data-page="account">
+  <div class="site-shell">
+    <header class="site-header" data-header>
+      <div class="container site-header__inner">
+        <a class="brand" href="./index.html" aria-label="Field Door home">
+          <span class="brand__mark"><img src="./assets/brand-mark.svg" alt="Field Door logo"></span>
+          <span>
+            <span class="brand__eyebrow">Account access</span>
+            <span class="brand__name">Field Door</span>
+          </span>
+        </a>
+        <nav class="site-nav" aria-label="Primary navigation">
+          <a class="site-nav__link" href="./index.html" data-nav-link="home">Home</a>
+          <a class="site-nav__link" href="./arenas.html" data-nav-link="arenas">Arenas</a>
+          <a class="site-nav__link" href="./booking.html" data-nav-link="booking">Booking</a>
+          <a class="site-nav__link" href="./about.html" data-nav-link="about">About</a>
+          <a class="site-nav__link" href="./contact.html" data-nav-link="contact">Contact</a>
+          <a class="button button--primary site-nav__cta" href="./account.html" data-ripple>My Account</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page-shell">
+      <section class="page-banner">
+        <div class="container">
+          <article class="page-banner__card glass-card fade-up">
+            <div>
+              <span class="eyebrow">Account page</span>
+              <h1>RETURN TO <span>YOUR BOOKINGS</span></h1>
+              <p>This page gives the site a proper login and profile destination instead of leaving account-related clicks without a page to land on.</p>
+            </div>
+            <div class="page-banner__meta-grid">
+              <div class="metric-card">
+                <strong>Saved</strong>
+                <span>Venues and preferred sports</span>
+              </div>
+              <div class="metric-card">
+                <strong>Recent</strong>
+                <span>Booking history and quick actions</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container account-grid">
+          <div class="account-main">
+            <article class="auth-card fade-up">
+              <span class="eyebrow">Sign in demo</span>
+              <h2>Access your Field Door account</h2>
+              <p>Use the form below as the visible auth destination. It can later connect to OTP or JWT-backed login from your production backend.</p>
+              <form data-login-form style="margin-top: 18px;">
+                <div class="field-row">
+                  <label for="account-phone">Phone number</label>
+                  <input id="account-phone" type="tel" placeholder="+91 98765 43210">
+                </div>
+                <div class="field-row">
+                  <label for="account-name">Name</label>
+                  <input id="account-name" type="text" placeholder="Your name">
+                </div>
+                <button class="button button--primary" type="submit" data-ripple>Sign in to demo</button>
+              </form>
+            </article>
+          </div>
+
+          <div class="account-side">
+            <article class="summary-card fade-up">
+              <span class="eyebrow">Recent activity</span>
+              <div class="summary-list" style="margin-top: 18px;">
+                <div class="summary-item"><span>Last venue</span><strong>Skyline Sports Hub</strong></div>
+                <div class="summary-item"><span>Saved sport</span><strong>Football</strong></div>
+                <div class="summary-item"><span>Upcoming booking</span><strong>Friday, 7 PM</strong></div>
+              </div>
+            </article>
+            <article class="info-card fade-up">
+              <span class="eyebrow">Quick links</span>
+              <div class="inline-actions" style="margin-top: 16px;">
+                <a class="button button--secondary" href="./arenas.html" data-ripple>Browse venues</a>
+                <a class="button button--secondary" href="./booking.html" data-ripple>Book again</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <a class="brand" href="./index.html">
+            <span class="brand__mark"><img src="./assets/brand-mark.svg" alt="Field Door logo"></span>
+            <span>
+              <span class="brand__eyebrow">Account and repeat booking</span>
+              <span class="brand__name">Field Door</span>
+            </span>
+          </a>
+        </div>
+        <div>
+          <h3 class="footer-title">Navigation</h3>
+          <div class="footer-list">
+            <a href="./index.html">Home</a>
+            <a href="./arenas.html">Arenas</a>
+            <a href="./contact.html">Contact</a>
+          </div>
+        </div>
+        <div>
+          <h3 class="footer-title">Support</h3>
+          <div class="footer-list">
+            <span>Account help available</span>
+            <span>OTP and JWT wiring can be added next</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <nav class="mobile-dock" aria-label="Mobile navigation">
+      <a class="mobile-dock__link" href="./index.html" data-nav-link="home"><span class="mobile-dock__icon">⌂</span><span>Home</span></a>
+      <a class="mobile-dock__link" href="./arenas.html" data-nav-link="arenas"><span class="mobile-dock__icon">◫</span><span>Arenas</span></a>
+      <a class="mobile-dock__link" href="./booking.html" data-nav-link="booking"><span class="mobile-dock__icon">◷</span><span>Book</span></a>
+      <a class="mobile-dock__link" href="./contact.html" data-nav-link="contact"><span class="mobile-dock__icon">✉</span><span>Contact</span></a>
+      <a class="mobile-dock__link" href="./account.html" data-nav-link="account"><span class="mobile-dock__icon">◎</span><span>Account</span></a>
+    </nav>
+
+    <div class="toast" data-toast aria-live="polite"></div>
+  </div>
+
+  <script src="./main.js"></script>
+</body>
+</html>

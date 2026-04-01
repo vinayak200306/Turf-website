@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#120904">
+  <title>Field Door | Contact</title>
+  <meta name="description" content="Reach Field Door for bookings, venue onboarding, and support.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body data-page="contact">
+  <div class="site-shell">
+    <header class="site-header" data-header>
+      <div class="container site-header__inner">
+        <a class="brand" href="./index.html" aria-label="Field Door home">
+          <span class="brand__mark"><img src="./assets/brand-mark.svg" alt="Field Door logo"></span>
+          <span>
+            <span class="brand__eyebrow">Support and onboarding</span>
+            <span class="brand__name">Field Door</span>
+          </span>
+        </a>
+        <nav class="site-nav" aria-label="Primary navigation">
+          <a class="site-nav__link" href="./index.html" data-nav-link="home">Home</a>
+          <a class="site-nav__link" href="./arenas.html" data-nav-link="arenas">Arenas</a>
+          <a class="site-nav__link" href="./booking.html" data-nav-link="booking">Booking</a>
+          <a class="site-nav__link" href="./about.html" data-nav-link="about">About</a>
+          <a class="site-nav__link" href="./contact.html" data-nav-link="contact">Contact</a>
+          <a class="button button--primary site-nav__cta" href="./account.html" data-ripple>Sign In</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page-shell">
+      <section class="page-banner">
+        <div class="container">
+          <article class="page-banner__card glass-card fade-up">
+            <div>
+              <span class="eyebrow">Contact page</span>
+              <h1>LET’S GET YOUR <span>GAME MOVING</span></h1>
+              <p>Use this page for support requests, venue onboarding, or client enquiries while the production backend credentials are still being finalized.</p>
+            </div>
+            <div class="page-banner__meta-grid">
+              <div class="metric-card">
+                <strong>Support</strong>
+                <span>Booking help, refunds, and venue questions</span>
+              </div>
+              <div class="metric-card">
+                <strong>Sales</strong>
+                <span>Venue partnerships and onboarding demos</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container contact-grid">
+          <div class="detail-copy fade-up">
+            <article class="booking-form">
+              <span class="eyebrow">Send a message</span>
+              <h2>We reply with context, not canned messages.</h2>
+              <p>All form interactions work on both device sizes and now give immediate feedback instead of doing nothing.</p>
+              <form data-contact-form style="margin-top: 18px;">
+                <div class="field-row">
+                  <label for="contact-name">Full name</label>
+                  <input id="contact-name" type="text" name="name" placeholder="Your name">
+                </div>
+                <div class="field-row">
+                  <label for="contact-email">Email</label>
+                  <input id="contact-email" type="email" name="email" placeholder="you@example.com">
+                </div>
+                <div class="field-row">
+                  <label for="contact-topic">Topic</label>
+                  <select id="contact-topic" name="topic">
+                    <option value="booking-support">Booking support</option>
+                    <option value="venue-onboarding">Venue onboarding</option>
+                    <option value="refund-help">Refund help</option>
+                    <option value="general">General enquiry</option>
+                  </select>
+                </div>
+                <div class="field-row">
+                  <label for="contact-message">Message</label>
+                  <textarea id="contact-message" name="message" placeholder="Tell us what you need."></textarea>
+                </div>
+                <button class="button button--primary" type="submit" data-ripple>Send message</button>
+              </form>
+            </article>
+          </div>
+
+          <div class="detail-side">
+            <article class="contact-card fade-up">
+              <h3>Email support</h3>
+              <p>hello@fielddoor.in</p>
+            </article>
+            <article class="contact-card fade-up">
+              <h3>Booking hotline</h3>
+              <p>+91 90000 11111</p>
+            </article>
+            <article class="contact-card fade-up">
+              <h3>Hours</h3>
+              <p>Every day, 9 AM to 9 PM</p>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <a class="brand" href="./index.html">
+            <span class="brand__mark"><img src="./assets/brand-mark.svg" alt="Field Door logo"></span>
+            <span>
+              <span class="brand__eyebrow">Support that feels human</span>
+              <span class="brand__name">Field Door</span>
+            </span>
+          </a>
+        </div>
+        <div>
+          <h3 class="footer-title">Navigation</h3>
+          <div class="footer-list">
+            <a href="./index.html">Home</a>
+            <a href="./about.html">About</a>
+            <a href="./account.html">Account</a>
+          </div>
+        </div>
+        <div>
+          <h3 class="footer-title">Reach us</h3>
+          <div class="footer-list">
+            <span>hello@fielddoor.in</span>
+            <span>9 AM to 9 PM support</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <nav class="mobile-dock" aria-label="Mobile navigation">
+      <a class="mobile-dock__link" href="./index.html" data-nav-link="home"><span class="mobile-dock__icon">⌂</span><span>Home</span></a>
+      <a class="mobile-dock__link" href="./arenas.html" data-nav-link="arenas"><span class="mobile-dock__icon">◫</span><span>Arenas</span></a>
+      <a class="mobile-dock__link" href="./booking.html" data-nav-link="booking"><span class="mobile-dock__icon">◷</span><span>Book</span></a>
+      <a class="mobile-dock__link" href="./contact.html" data-nav-link="contact"><span class="mobile-dock__icon">✉</span><span>Contact</span></a>
+      <a class="mobile-dock__link" href="./account.html" data-nav-link="account"><span class="mobile-dock__icon">◎</span><span>Account</span></a>
+    </nav>
+
+    <div class="toast" data-toast aria-live="polite"></div>
+  </div>
+
+  <script src="./main.js"></script>
+</body>
+</html>
